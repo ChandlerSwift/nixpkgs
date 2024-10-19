@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/angerman/meson64-tools";
     description = "Tools for Amlogic Meson ARM64 platforms";
-    license = licenses.unfree; # https://github.com/angerman/meson64-tools/issues/2
+    license = licenses.mit;
     maintainers = with maintainers; [ aarapov ];
   };
 }
