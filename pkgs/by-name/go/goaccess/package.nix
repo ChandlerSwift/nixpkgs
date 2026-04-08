@@ -7,6 +7,7 @@
   libmaxminddb,
   ncurses,
   openssl,
+  zlib,
   withGeolocation ? true,
 }:
 
@@ -21,11 +22,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-n0+Z3kkjMCjPN0Cb0R1QGSzzXH3S9kjDchy9ay6109s=";
   };
 
+  patches = [ ./display-zlib-in-version-output.patch ];
+
   nativeBuildInputs = [ autoreconfHook ];
 
   buildInputs = [
     ncurses
     openssl
+    zlib
   ]
   ++ lib.optionals withGeolocation [ libmaxminddb ]
   ++ lib.optionals stdenv.hostPlatform.isDarwin [ gettext ];
@@ -33,6 +37,7 @@ stdenv.mkDerivation (finalAttrs: {
   configureFlags = [
     "--enable-utf8"
     "--with-openssl"
+    "--with-zlib"
   ]
   ++ lib.optionals withGeolocation [ "--enable-geoip=mmdb" ];
 

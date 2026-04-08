@@ -1,0 +1,14 @@
+diff --git a/src/commons.c b/src/commons.c
+index e3fc4e2..67008ad 100644
+--- a/src/commons.c
++++ b/src/commons.c
+@@ -186,6 +186,9 @@ display_version (void) {
+ #ifdef HAVE_LIBSSL
+   fprintf (stdout, "  --with-openssl\n");
+ #endif
++#ifdef HAVE_ZLIB
++  fprintf (stdout, "  --with-zlib\n");
++#endif
+ }
+
+ /* Get the enumerated value given a string.
